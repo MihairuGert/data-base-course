@@ -1,0 +1,16 @@
+export const reports = [
+  ["autopark", "Данные об автопарке предприятия", []],
+  ["drivers", "Перечень и общее число водителей", [["vehicle_id", "ТС ID", "number"]]],
+  ["driver-distribution", "Распределение водителей по автомобилям", []],
+  ["passenger-routes", "Распределение пассажирского транспорта по маршрутам", []],
+  ["mileage", "Пробег транспорта за период", [["date_from", "С", "date"], ["date_to", "По", "date"], ["category_id", "Категория ID", "number"], ["vehicle_id", "ТС ID", "number"]]],
+  ["repairs-summary", "Число ремонтов и их стоимость", [["date_from", "С", "date"], ["date_to", "По", "date"], ["category_id", "Категория ID", "number"], ["brand", "Марка"], ["vehicle_id", "ТС ID", "number"]]],
+  ["staff-hierarchy", "Подчиненность персонала", []],
+  ["garage", "Наличие гаражного хозяйства", []],
+  ["vehicle-distribution", "Распределение автотранспорта на предприятии", []],
+  ["freight", "Грузоперевозки машиной за период", [["vehicle_id", "ТС ID", "number"], ["date_from", "С", "date"], ["date_to", "По", "date"]]],
+  ["used-parts", "Использованные для ремонта узлы и агрегаты", [["date_from", "С", "date"], ["date_to", "По", "date"], ["category_id", "Категория ID", "number"], ["brand", "Марка"], ["vehicle_id", "ТС ID", "number"]]],
+  ["vehicle-movement", "Полученная и списанная автотехника", [["date_from", "С", "date"], ["date_to", "По", "date"]]],
+  ["manager-subordinates", "Состав подчиненных руководителя", [["manager_id", "Руководитель ID", "number"]]],
+  ["repairman-works", "Работы, выполненные специалистом", [["employee_id", "Сотрудник ID", "number"], ["date_from", "С", "date"], ["date_to", "По", "date"], ["vehicle_id", "ТС ID", "number"]]],
+];

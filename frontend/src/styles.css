@@ -1,0 +1,165 @@
+body {
+  margin: 0;
+  color: #202124;
+  background: #f7f7f7;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+header {
+  background: #ffffff;
+  border-bottom: 1px solid #d7d7d7;
+  padding: 12px 18px;
+}
+
+.topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.userbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #444;
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 20px;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+nav a {
+  color: #174ea6;
+  text-decoration: none;
+  padding: 5px 8px;
+  border: 1px solid #d0d7de;
+  background: #fafafa;
+}
+
+nav a.active {
+  color: #ffffff;
+  background: #174ea6;
+  border-color: #174ea6;
+}
+
+main {
+  padding: 18px;
+}
+
+.login-page {
+  display: grid;
+  min-height: 100vh;
+  box-sizing: border-box;
+  place-items: center;
+}
+
+.login-box {
+  width: min(760px, 100%);
+  background: #ffffff;
+  border: 1px solid #d7d7d7;
+  padding: 16px;
+}
+
+.entity,
+.report {
+  background: #ffffff;
+  border: 1px solid #d7d7d7;
+  margin: 0 0 18px;
+  padding: 12px;
+}
+
+.entity-form,
+.report-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+label {
+  display: grid;
+  gap: 3px;
+}
+
+label span {
+  color: #444;
+  font-size: 12px;
+}
+
+input {
+  min-width: 120px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #b8b8b8;
+  padding: 4px 6px;
+}
+
+button {
+  height: 30px;
+  border: 1px solid #9aa0a6;
+  background: #eeeeee;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e2e2e2;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+th,
+td {
+  border: 1px solid #d7d7d7;
+  padding: 5px 6px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: #f0f0f0;
+}
+
+.actions {
+  display: flex;
+  gap: 5px;
+}
+
+.error {
+  color: #a50e0e;
+  background: #fce8e6;
+  border: 1px solid #f4b9b3;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+.muted {
+  color: #666;
+}
