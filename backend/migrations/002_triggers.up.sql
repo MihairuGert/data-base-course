@@ -13,6 +13,9 @@ FOR EACH ROW EXECUTE FUNCTION fn_set_replaced_part_total_cost();
 CREATE OR REPLACE FUNCTION fn_refresh_repair_total_cost(p_repair_id BIGINT)
 RETURNS VOID AS $$
 BEGIN
+    -- Lock the repair row to prevent concurrent updates to the total cost
+    PERFORM 1 FROM repairs WHERE id = p_repair_id FOR UPDATE;
+
     UPDATE repairs r
     SET total_cost =
         COALESCE((SELECT SUM(cost) FROM repair_works WHERE repair_id = p_repair_id), 0) +
@@ -48,6 +51,9 @@ FOR EACH ROW EXECUTE FUNCTION fn_repair_total_cost_trigger();
 CREATE OR REPLACE FUNCTION fn_check_route_assignment_overlap()
 RETURNS TRIGGER AS $$
 BEGIN
+    -- Lock the table to ensure serializable access and prevent concurrent overlap race conditions
+    LOCK TABLE route_assignments IN SHARE ROW EXCLUSIVE MODE;
+
     IF EXISTS (
         SELECT 1
         FROM route_assignments ra
@@ -69,6 +75,9 @@ FOR EACH ROW EXECUTE FUNCTION fn_check_route_assignment_overlap();
 CREATE OR REPLACE FUNCTION fn_check_driver_vehicle_overlap()
 RETURNS TRIGGER AS $$
 BEGIN
+    -- Lock the table to ensure serializable access and prevent concurrent overlap race conditions
+    LOCK TABLE driver_vehicle_assignments IN SHARE ROW EXCLUSIVE MODE;
+
     IF EXISTS (
         SELECT 1
         FROM driver_vehicle_assignments dva
@@ -156,6 +165,9 @@ RETURNS TRIGGER AS $$
 DECLARE
     v_current BIGINT;
 BEGIN
+    -- Lock the table to ensure serializable access and prevent concurrent circular dependency creation
+    LOCK TABLE employees IN SHARE ROW EXCLUSIVE MODE;
+
     v_current := NEW.manager_id;
     WHILE v_current IS NOT NULL LOOP
         IF v_current = NEW.id THEN
